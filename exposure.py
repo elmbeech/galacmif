@@ -139,7 +139,7 @@ def exposure_times_image(s_image, s_find="Information\|Image\|Channel\|ExposureT
     return(li_exposure, s_meta)
 
 
-def exposure_times_slide(df_img, s_czidi='./', s_codedir=',/'):
+def exposure_times_slide(df_img, s_czidir='./', s_codedir=',/'):
     '''
     version: 2021-03-06
     input:
@@ -219,7 +219,7 @@ def exposure_times_sampleset(ls_slide, s_codedir='./', s_czidir='./', s_czitype=
     # for each slide
     for s_slide  in ls_slide:
         # pars for czi files
-        df_img = cmif.parse_czi(
+        df_img = parse_czi(
             s_czidir = f'{s_czidir}{s_slide}/splitscenes/',
             s_czitype=s_czitype,  # exposer time is always taken from regular images
         )

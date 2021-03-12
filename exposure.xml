@@ -1,0 +1,37 @@
+<tool id="exposure" name="Exposure" version="0.0.1.1" profile="17.09">
+
+    <description>Capture exposure from czi files</description>
+
+    <requirements>
+        <requirement type="package">pandas</requirement>
+        <requirement type="package">python-bioformats</requirement>
+        <requirement type="package">python-javabridge</requirement>
+    </requirements>
+
+    <command detect_errors="exit_code"><![CDATA[
+        mkdir -p czi/$slide/splitscenes &&
+        mkdir -p out &&
+
+        #for $czi in $czis:
+            ln -s "$czi" czi/$slide/splitscenes/ &&
+        #end for
+
+        python $__tool_directory__/exposure.py 
+        $slide
+        --czidir czi/
+        --codedir out
+    ]]></command>
+
+    <inputs>
+        <param name="slide" type="text" label="Slide identifier"/>
+        <param name="czis" type="data_collection" format="tiff" collection_type="list"  label="Input CZI files"/>
+    </inputs>
+
+    <outputs>
+        <collection type="list"  name="Exposures">
+            <discover_datasets pattern="__designation_and_ext__" directory="out" format="csv" visible="false"/>
+        </collection>
+    </outputs>
+
+    <help></help>
+</tool>
