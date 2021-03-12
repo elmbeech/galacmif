@@ -1,10 +1,10 @@
 ####
-# title: metadata.py
+# title: exposure.py
 #
 # language: Python3.8
 # date: 2020-07-00
 # license: GPL>=v3
-# author: Jenny, bue
+# author: Jenny, Allie, bue
 #
 # description:
 #   python3 library using python bioformats to extract image metadata
